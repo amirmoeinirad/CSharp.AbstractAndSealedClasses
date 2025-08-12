@@ -15,7 +15,8 @@ namespace AbstractAndSealedClasses
     /// <summary>
     /// Person Class
     /// </summary>
-    
+
+    // Abstract classes cannot be instantiated directly.
     internal abstract class Person
     {
         // Fields
@@ -27,14 +28,14 @@ namespace AbstractAndSealedClasses
         // Default Constructor
         public Person()
         {
-            Console.WriteLine("Person class's default constructor...\n");
+            Console.WriteLine("Person class's default constructor called...\n");
         }
 
 
         // Custom Constructor
         public Person(string fn, string ln)
         {
-            Console.WriteLine("Person class's custom constructor...\n");
+            Console.WriteLine("Person class's custom constructor called...\n");
 
             firstName = fn;
             lastName = ln;
@@ -69,7 +70,7 @@ namespace AbstractAndSealedClasses
         // 'base' means calling the base class's constructor.
         public Employee() : base() 
         {
-            Console.WriteLine("Employee subclass's default constructor...\n");
+            Console.WriteLine("Employee subclass's default constructor called...\n");
         }
 
 
@@ -78,7 +79,7 @@ namespace AbstractAndSealedClasses
         // Then, Employee inherits the 'firstName' and 'lastName' fields from Person.
         public Employee(string fn, string ln, ushort hy) : base(fn, ln)
         {
-            Console.WriteLine("Employee subclass's custom constructor...\n");
+            Console.WriteLine("Employee subclass's custom constructor called...\n");
 
             hireYear = hy;
         }
@@ -111,7 +112,7 @@ namespace AbstractAndSealedClasses
         // Default Constructor
         public Contractor() : base()
         {
-            Console.WriteLine("Contractor subclass's default constructor...\n");
+            Console.WriteLine("Contractor subclass's default constructor called...\n");
         }
 
 
@@ -119,7 +120,7 @@ namespace AbstractAndSealedClasses
         // Passing 'fn' and 'ln' to the base class's constructor to initialize the 'firstName' and 'lastName' fields.
         public Contractor(string fn, string ln, string cn) : base(fn, ln)
         {
-            Console.WriteLine("Contractor subclass's custom constructor...\n");
+            Console.WriteLine("Contractor subclass's custom constructor called...\n");
 
             companyName = cn;
         }
@@ -147,7 +148,7 @@ namespace AbstractAndSealedClasses
         public static void Main()
         {
             Console.WriteLine("----------------------------------------");
-            Console.WriteLine("Abstract and Sealed classes in C#.NET...");
+            Console.WriteLine("Abstract and Sealed Classes in C#.NET...");
             Console.WriteLine("----------------------------------------\n");
             
             Console.WriteLine("In Main()...\n");
@@ -158,9 +159,13 @@ namespace AbstractAndSealedClasses
             Person em1 = new Employee("Bradley", "Jones", 1983);
             Employee em2 = new Employee("Bradley", "Jones", 1983);
 
+            Console.WriteLine("------\n");
+
             // A Contractor object can be both of type Person and Contractor.
             Person worker1 = new Contractor("Bryce", "Hatfield", "EdgeQuest");
             Contractor worker2 = new Contractor("Bryce", "Hatfield", "EdgeQuest");
+
+            Console.WriteLine("------\n");
 
             // Calling the overridden method from the Employee class.
             // Both 'em1' and 'em2' can call the DisplayFullName method, but 'em1' is of type Person.
